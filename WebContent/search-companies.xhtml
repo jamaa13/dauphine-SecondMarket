@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"	
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+	Dauphine Market
+</ui:define>
+
+		<ui:define name="content">
+			
+	<f:view>
+		<f:event type="preRenderView" listener="#{userLoginBean.checkLogin}"/>
+
+		<ui:include src="/sections/login-header.xhtml" />
+		
+			
+		<div id="left_box">
+			<h3>#{affich.searchCompaniesPageTitle}</h3>
+			 <h:messages id="confirm_message" />
+			<!-- Sing in -->
+
+				<div id="search_box" class="floatLeft">
+					<h:form prependId="false">
+						<div class="clearBoth" >
+							<h:panelGroup>
+								<h:outputLabel value="#{affich.companyNameLabel}" for="companyName"></h:outputLabel>
+								<h:inputText id="companyName" value="#{companySearchBean.companyName}" >
+								</h:inputText>
+							</h:panelGroup>
+						</div>
+						<div class="clearBoth" >
+							<h:panelGroup>
+								<h:outputLabel value="#{affich.companyIndustryLabel}" for="companyName"></h:outputLabel>
+								<h:inputText id="companyIndustry" value="#{companySearchBean.companyIndustry}" style="margin-left: 31px;">
+								</h:inputText>
+							</h:panelGroup>
+						</div>
+						<div class="clearBoth" >
+							<h:panelGroup>
+								<h:outputLabel value="#{affich.companyWebsiteLabel}" for="companyWebsite"></h:outputLabel>
+								<h:inputText id="companyWebSite" value="#{companySearchBean.companyWebSite}" style="margin-left: 28px;">
+								</h:inputText>
+							</h:panelGroup>
+						</div>																								
+						<div class="floatRight">
+							<h:commandButton
+								styleClass="text_button" id="button1" value="#{affich.searchHeader}"
+								action="#{companySearchBean.search}" onclick="submitClearDefaultText('keywordId','Mot clé');"/>
+						</div>
+					</h:form>
+				</div>
+			<h2>Affichage :  Résultat de la recherche :</h2>
+			<h:form>
+			
+			<table class="table table-striped">
+				<tbody>
+					<ui:repeat var="o" value="#{companySearchBean.result}">
+						<tr>
+							<td>
+								<span>#{o.companyName}</span>
+							</td>
+							<td>
+								<span>#{o.companyIndustry}</span>
+							</td>
+							<td>
+								<span>#{o.companyWebSite}</span>
+							</td>											
+						</tr>						
+					</ui:repeat>			
+					
+				</tbody>
+			</table>
+			
+			</h:form>
+			<ui:include src="/sections/help-box.xhtml" />
+
+		</div>	
+		<div class="clearBoth"/>
+		</f:view>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

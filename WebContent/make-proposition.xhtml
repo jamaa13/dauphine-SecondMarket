@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsf/c"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>IGNORED</title>
+</head>
+
+<body>
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+	Dauphine Market
+</ui:define>
+
+		<ui:define name="content">
+
+		<ui:include src="/sections/login-header.xhtml" />
+		
+
+		<div id="left_box">
+
+			<h:form prependId="false" rendered="#{param.type == 'Titre'}">
+			<h3>#{msgs.makeEncherePageTitle}</h3>
+				
+				<div id="signUp" class="floatLeft">
+					<div id="errorsBox" class="errormsg" style="margin-bottom: 10px;display:none;">
+						#{msgs.errorsListTitle}
+						<h:messages id="errorsList" />
+
+						<script language="javascript" type="text/javascript">
+							{
+								shouldShowErrorsBox('errorsList');
+							}
+						</script>
+					</div>			
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{msgs.offreLibelleLabel}" for="offreLabel"></h:outputLabel>
+							<h:inputText id="offreLabel"
+								value="#{param.libelle}" readonly="true">
+							</h:inputText>
+						</h:panelGroup>
+					</div>
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{msgs.prixActuel}" for="prixActLabel"></h:outputLabel>
+							<h:inputText id="prixActLabel"
+								value="#{param.prixActuel}" readonly="true">
+							</h:inputText>
+						</h:panelGroup>
+					</div>	
+				
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{msgs.prixLabel}" for="prixLabel"></h:outputLabel>
+							<h:inputText id="prixLabel"
+								value="#{makeEnchereBean.prix}">
+							</h:inputText>
+						</h:panelGroup>
+					</div>	
+					
+					<div class="clearBoth">
+						<h:commandButton
+							styleClass="text_button" id="button4" value="Sign up"
+							action="#{makeEnchereBean.makeEnchere}" >
+								<f:param  name="idOffer" value="#{param.idOffer}" />
+								<f:param  name="prixActuel" value="#{param.prixActuel}" />
+							</h:commandButton>
+							
+					</div>
+					<div class="clearBoth">
+						#{msgs.requiredFields}
+					</div>
+				</div>
+			</h:form>
+			
+			<h:form prependId="false" rendered="#{param.type != 'Titre'}">
+			<h3>#{msgs.makePropositionPageTitle}</h3>
+				<div id="signUp" class="floatLeft">
+					<div id="errorsBox" class="errormsg" style="margin-bottom: 10px;display:none;">
+						#{msgs.errorsListTitle}
+						<h:messages id="errorsPropositionList" />
+
+						<script language="javascript" type="text/javascript">
+							{
+								shouldShowErrorsBox('errorsPropositionList');
+							}
+						</script>
+					</div>			
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{msgs.offreLibelleLabel}" for="offrePropLabel"></h:outputLabel>
+							<h:inputText id="offrePropLabel"
+								value="#{param.libelle}" readonly="true">
+							</h:inputText>
+						</h:panelGroup>
+					</div>
+					<div class="clearBoth" style="height:auto !important">
+						<h:panelGroup>
+							<h:outputLabel value="#{msgs.offerDescription}" for="compnayPropDescription"></h:outputLabel>
+							<h:inputTextarea id="companyPropDescription"
+								value="#{makePropositionBean.description}" cols="10" rows="5"  required="true" requiredMessage="#{msgs.companyDescriptionError}">
+							</h:inputTextarea>
+						</h:panelGroup>
+					</div>					
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{msgs.prixLabel}" for="prixPropLabel"></h:outputLabel>
+							<h:inputText id="prixPropLabel"
+								value="#{makePropositionBean.prix}">
+							</h:inputText>
+						</h:panelGroup>
+					</div>	
+					
+					<div class="clearBoth">
+						<h:commandButton
+							styleClass="text_button" id="buttonProp4" value="Sign up"
+							action="#{makePropositionBean.makeOffer}" >
+								<f:param  name="idOffer" value="#{param.idOffer}" />
+								<f:param  name="type" value="#{param.type}" />
+							</h:commandButton>
+							
+					</div>
+					<div class="clearBoth">
+						#{msgs.requiredFields}
+					</div>
+				</div>
+			</h:form>
+
+
+			<ui:include src="/sections/help-box.xhtml" />
+
+		</div>	
+		<div class="clearBoth"/>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

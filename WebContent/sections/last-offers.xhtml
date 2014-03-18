@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+	<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition>
+			<!-- Last Offers. -->
+			<div id="lastOffers" class="clearBoth floatLeft">
+				<h2>#{affich.lastOffersHeader}</h2>
+				<div class="box">
+					<ul>
+						
+						<ui:repeat var="o" value="#{lastOffersBean.lastOffersList}" varStatus="status">
+							<li>#{o}</li>
+					   </ui:repeat>
+
+					</ul>
+				</div>
+			</div>
+	</ui:composition>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+	Dauphine Market
+</ui:define>
+
+		<ui:define name="content">
+			
+		<ui:include src="/sections/login-header.xhtml" />
+		
+			
+		<div id="left_box">
+			<!-- Sing in -->
+			<div class="login-callout">
+			    <div class="login-callout-btns" style="margin: 0px 0px 0px 43px;">
+
+						<h:link styleClass="big-button-blue" action="#{offresBean.companiesOffers}">
+							Offres entreprises 
+							<br/>
+				           <!--  <span class="button-subtitle">Accèder aux offres</span> -->
+						</h:link>
+
+			            
+			        &nbsp; &nbsp;
+						<h:link styleClass="big-button-green" value="" action="#{offresBean.investiseurOffers}">
+							Offres Investisseurs 			            
+							<br/>
+							<!-- <span class="button-subtitle">Accèder aux offres</span> -->
+						</h:link>
+			    </div>
+		   <div class="login-callout-btns" style="margin: 10px 0px 0px 190px">
+			    <h:link styleClass="big-button-green" value="" outcome="make-offer">
+							Déposer une offre 			            
+							<br/>
+							<!-- <span class="button-subtitle">Déposer une offre</span> -->
+						</h:link>
+			</div>   			    
+			</div>
+			<h:form >
+				<table class="table table-striped">
+				<thead>
+			    <tr>
+			      <th>Entreprise</th>
+			      <th>Libelle</th>
+			      <th>Status</th>
+			      <th>Creation Date</th>
+			    </tr>
+			  </thead>				
+					<tbody>
+						<ui:repeat var="o" value="#{offresBean.result}">
+							<tr>
+							<td>
+								<span>#{o.companyName}</span>
+							</td>
+							<td>
+								<h:link value="#{o.libelle}" outcome="make-proposition">
+									<f:param  name="id" value="#{o.id}" />								
+								</h:link>							
+							</td>							
+							<td>
+								<span>#{o.status}</span>
+							</td>
+							<td>
+								<span>#{o.creationDate}</span>
+							</td>							
+							</tr>						
+						</ui:repeat>
+					</tbody>
+				</table>
+			</h:form>
+			<ui:include src="/sections/help-box.xhtml" />
+
+		</div>	
+		<div class="clearBoth"/>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

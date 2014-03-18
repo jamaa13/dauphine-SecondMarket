@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsf/c"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>IGNORED</title>
+</head>
+
+<body>
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+	Dauphine Market
+</ui:define>
+
+		<ui:define name="content">
+
+		<ui:include src="/sections/login-header.xhtml" />
+		
+
+		<div id="left_box">
+
+			<h:form prependId="false">
+				<div id="signUp" class="floatLeft">
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{affich.offreLibelleLabel}" for="offrePropLabel"></h:outputLabel>
+							<h:inputText id="offrePropLabel"
+								value="#{param.libelle}" readonly="true">
+							</h:inputText>
+						</h:panelGroup>
+					</div>					
+					<div class="clearBoth">
+						<h:commandButton
+							styleClass="text_button" id="buttonProp4" value="Validate"
+							action="#{propositionBean.validatePropisition}" >
+								<f:param  name="propId" value="#{param.propId}" />
+							</h:commandButton>
+							
+					</div>
+					<div class="clearBoth">
+						#{affich.requiredFields}
+					</div>
+				</div>
+			</h:form>
+
+
+			<ui:include src="/sections/help-box.xhtml" />
+
+		</div>	
+		<div class="clearBoth"/>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

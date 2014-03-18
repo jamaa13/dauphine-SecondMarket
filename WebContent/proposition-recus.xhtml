@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"	
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+	Dauphine Market
+</ui:define>
+
+		<ui:define name="content">
+			
+	<f:view>
+		<ui:include src="/sections/login-header.xhtml" />
+		
+			
+		<div id="left_box">
+		<h3>#{affich.RecievedPropositionsMessages}</h3>
+			<h:form>
+			
+			<table class="table table-striped">
+								<thead>
+			    <tr>
+			      <th>user</th>
+			      <th>Libelle</th>
+			      <th>Statut</th>
+			      <th>Prix</th>
+			    </tr>
+			  </thead>	
+				<tbody>
+                             <ui:repeat var="o" value="#{propositionBean.result}">
+							<tr>
+							<td>
+								<span>#{o.userId}</span>
+							</td>							
+							<td>
+									<h:link value="#{o.libelleOffre}" outcome="validate-proposition" rendered="#{o.status != 'VALIDATED'}">
+										<f:param  name="propId" value="#{o.id}" />
+										<f:param  name="libelle" value="#{o.libelleOffre}" />
+									</h:link>																
+							<h:outputText value="#{o.libelleOffre}" rendered="#{o.status == 'VALIDATED'}"/>
+							</td>
+							<td>
+								<span>#{o.status}</span>
+							</td>							
+							<td>
+								<span>#{o.prix}</span>
+							</td>								
+							</tr>						
+						</ui:repeat>		
+					
+				</tbody>
+			</table>
+									
+			</h:form>
+			<ui:include src="/sections/help-box.xhtml" />
+
+		</div>	
+		<div class="clearBoth"/>
+		</f:view>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

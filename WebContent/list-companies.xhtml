@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>IGNORED</title>
+</head>
+
+<body>
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+	        Dauphine market 
+</ui:define>
+
+		<ui:define name="content">
+
+		<ui:include src="/sections/login-header.xhtml" />
+		
+
+		<div id="left_box">
+			<h3>#{affich.signUpCompanyTitle}</h3>
+			
+			<h:messages errorStyle="color: red" infoStyle="color: green" layout="table" globalOnly="true" />
+			
+			
+			<!-- Sing in -->
+			<h:form prependId="false">
+
+				<div id="signUp" class="floatLeft">
+					
+					<!-- Address block -->
+					<h2>#{affich.companyInformationHeader}</h2>
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{affich.companyNameLabel}" for="companyName"></h:outputLabel>
+							<h:inputText id="companyName"
+								value="#{companySignUpBean.companyName}"  required="true" requiredMessage="#{affich.compnayNameError}">
+							</h:inputText>
+						</h:panelGroup>
+					</div>
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{affich.companyIndustryLabel}" for="companyIndustry"></h:outputLabel>
+							<h:inputText id="companyIndustry"
+								value="#{companySignUpBean.companyIndustry}" required="true" requiredMessage="#{affich.companyIndustryError}">
+							</h:inputText>
+						</h:panelGroup>
+					</div>							
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{affich.companyWebsiteLabel}" for="companyWebsite"></h:outputLabel>
+							<h:inputText id="companyWebsite"
+								value="#{companySignUpBean.companyWebsite}" required="true" requiredMessage="#{affich.compnayWebsiteError}">
+							</h:inputText>
+						</h:panelGroup>
+					</div>			
+					<div class="clearBoth" style="height:auto !important">
+						<h:panelGroup>
+							<h:outputLabel value="#{affich.companyDescription}" for="companyDescription"></h:outputLabel>
+							<h:inputTextarea id="companyDescription"
+								value="#{companySignUpBean.companyDescription}" cols="10" rows="5"  required="true" requiredMessage="#{affich.companyDescriptionError}">
+							</h:inputTextarea>
+						</h:panelGroup>
+					</div>
+
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{affich.companyUserLabel}" for="employerNumber"></h:outputLabel>
+							<h:commandButton styleClass="text_button" id="button1" value="Nouvel utilisateur " action="#{companySignUpBean.createUser}" />
+							<h:commandButton styleClass="text_button" id="button2" value="Ajouter utilisateur"  onclick="showHide(); return false;"  />							
+						</h:panelGroup>
+					</div>
+					<div class="clearBoth" id="hideDiv" style="display: none;">
+						<h:panelGroup>
+							<h:outputLabel value="" for="companyUser"></h:outputLabel>
+							<h:inputText id="companyUser"
+								value="#{companySignUpBean.companyUser}" >
+							</h:inputText>						
+						</h:panelGroup>
+					</div>		
+					<div class="clearBoth">
+						<h:commandButton
+							styleClass="text_button" id="button4" value="Sign up"
+							action="#{companySignUpBean.signUP}" />
+					</div>
+					<div class="clearBoth">
+						#{affich.requiredFields}
+					</div>
+				</div>
+			</h:form>
+
+			<ui:include src="/sections/help-box.xhtml" />
+
+		</div>	
+		<div class="clearBoth"/>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

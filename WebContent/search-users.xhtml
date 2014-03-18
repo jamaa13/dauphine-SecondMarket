@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"	
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+	Dauphine Market
+</ui:define>
+
+		<ui:define name="content">
+			
+	<f:view>
+		<f:event type="preRenderView" listener="#{userLoginBean.checkLogin}"/>
+
+		<ui:include src="/sections/login-header.xhtml" />
+		
+			
+		<div id="left_box">
+			<h3>#{affich.searchPageTitle}</h3>
+			<h:messages errorStyle="color: red" infoStyle="color: green" layout="table" globalOnly="true" />  
+			 <h:messages id="confirm_message" />
+			<!-- Sing in -->
+
+				<div id="search_box" class="floatLeft">
+					<h:form prependId="false">						
+						<div class="floatLeft" style="">
+							<h:panelGroup>
+								<h:inputText id="email" value="#{searchUsersBean.email}" onfocus="clearDefaultText(this, 'Mot clé')" onblur="replaceDefaultText(this,'Mot clé')">
+								</h:inputText>
+							</h:panelGroup>
+						</div><br/> <br/>
+						<div class="floatLeft">
+							<h:panelGroup>
+								<h:panelGroup title="PROFILE">
+										<h:selectOneRadio value="#{searchUsersBean.profile}">
+					   						<f:selectItem itemValue="REGISTERED" itemLabel="ENREGISTRER" selected="true"/>
+					   						<f:selectItem itemValue="SUBSCRIBER" itemLabel="ABONNÉE" />
+					   						<f:selectItem itemValue="COMPANY_SUBSCRIBER" itemLabel="ABONNÉE ENTREPRISE" />
+					   					</h:selectOneRadio>
+								</h:panelGroup>
+							</h:panelGroup>
+						</div>
+						<div class="floatLeft">
+							<h:panelGroup>
+								<h:panelGroup title="STATUS">
+										<h:selectOneRadio value="#{searchUsersBean.status}">
+					   						<f:selectItem itemValue="VALIDATED" itemLabel="VALIDATED   " />
+					   						<f:selectItem itemValue="CREATED" itemLabel="CREATED" selected="true"/>
+					   					</h:selectOneRadio>
+								</h:panelGroup>
+							</h:panelGroup>
+						</div>						
+						<div class="floatRight">
+							<h:commandButton
+								styleClass="text_button" id="button1" value="#{affich.searchHeader}"
+								action="#{searchUsersBean.search}" onclick="submitClearDefaultText('keywordId','Mot clé');"/>
+						</div>
+					</h:form>
+				</div>
+			<h2>Résultat de la recherche :</h2>
+			<h:form>
+			
+			<table class="table table-striped">
+				<tbody>
+					<ui:repeat var="o" value="#{searchUsersBean.result}">
+						<tr>
+							<td>
+								<span>#{o.email}</span>
+							</td>
+							<td>
+								<span>#{o.firstName}</span>
+							</td>
+							<td>
+								<span>#{o.lastName}</span>
+							</td>
+							<td>
+								<span>#{o.phoneNbr}</span>
+							</td>
+							<td>
+								<span>#{o.status}</span>
+							</td>
+							<td>
+								<span><h:selectBooleanCheckbox id="validate" value="#{o.validate}" rendered="#{o.status == 'CREATED'}" /></span>								
+							</td>														
+						</tr>						
+					</ui:repeat>			
+					
+				</tbody>
+			</table>
+			
+			<h:commandLink styleClass="floatRight link_text_button" value="#{affich.applyLinkLabel}" 
+									action="#{searchUsersBean.apply}">
+			</h:commandLink>
+			</h:form>
+			<ui:include src="/sections/help-box.xhtml" />
+
+		</div>	
+		<div class="clearBoth"/>
+		</f:view>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+	Dauphine Market
+</ui:define>
+
+		<ui:define name="content">
+
+			<ui:include src="/sections/login-header.xhtml" />
+			
+
+		<div id="left_box">
+			<h3>#{affich.newOfferPageTitle}</h3>
+			<!-- Sing in -->
+			<h:form prependId="false">
+
+				<div id="signUp" class="floatLeft">
+					<h:messages errorStyle="color: red" infoStyle="color: green" layout="table" globalOnly="true" />
+					
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="Type de contrat"></h:outputLabel>
+							<h:selectOneMenu id="contract-type-id" styleClass="oneSelect" onchange="showHideOtherBox()"
+								value="#{makeOffreBean.contractType}">
+								<f:selectItem itemLabel="Stock option" itemValue="1" />
+								<f:selectItem itemLabel="Action" itemValue="2" />
+								<f:selectItem itemLabel="Titre" itemValue="3" />
+							</h:selectOneMenu>
+						</h:panelGroup>
+					</div>
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel for="label-id"
+								value="Libelle" />
+							<h:inputText id="label-id" required="true" requiredMessage="#{affich.lastNameError}" value="#{makeOffreBean.label}" />
+						</h:panelGroup>
+					</div>
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel for="comment-id"
+								value="Commentaire" />
+							<h:inputText id="comment-id" required="true" requiredMessage="#{affich.firstNameError}" 
+								value="#{makeOffreBean.comment}" />
+						</h:panelGroup>
+					</div>
+					<div id="stock-option-section-id" class="clearBoth" >
+						<div class="clearBoth">
+							<h:panelGroup>
+								<h:outputLabel for="initial-price-id"
+									value="Prix initial" >
+								</h:outputLabel>
+								<h:inputText id="initial-price-id" value="#{makeOffreBean.initPrice}" >
+								</h:inputText>
+							</h:panelGroup>
+						</div>
+						<div class="clearBoth">
+							<h:panelGroup>
+								<h:outputLabel for="option-price-id"
+									value="Prix Option" >
+								</h:outputLabel>
+								<h:inputText id="option-price-id" value="#{makeOffreBean.prixOption}" >
+								</h:inputText>
+							</h:panelGroup>
+						</div>
+
+						<div class="clearBoth">
+							<h:panelGroup>
+								<h:outputLabel for="maturite-price-id"
+									value="Prix Maturite" >
+								</h:outputLabel>
+								<h:inputText id="maturite-price-id" value="#{makeOffreBean.prixMaturite}" >
+								</h:inputText>
+							</h:panelGroup>
+						</div>
+						<div class="clearBoth">
+							<h:panelGroup>
+								<h:outputLabel for="maturite_date-id"
+									value="Date Maturite" />
+								<h:inputText id="maturite_date-id"
+									value="#{makeOffreBean.dateMaturite}" >
+									<f:convertDateTime pattern="MM/dd/yyyy"/>  
+								</h:inputText>
+							</h:panelGroup>
+						</div>
+					</div>					
+					<div id="action-section-id" class="clearBoth" style="display: none;">
+						<div class="clearBoth">
+							<h:panelGroup>
+								<h:outputLabel for="price-id"
+									value="Prix " >
+								</h:outputLabel>
+								<h:inputText id="price-id" value="#{makeOffreBean.actionPrice}" >
+								</h:inputText>
+							</h:panelGroup>
+						</div>
+						<div class="clearBoth">
+							<h:panelGroup>
+								<h:outputLabel for="number-id"
+									value="Nombre" />
+								<h:inputText id="number-id"
+									value="#{makeOffreBean.actionNumber}" >
+								</h:inputText>
+							</h:panelGroup>
+						</div>
+					</div>					
+
+					<div id="titre-section-id" class="clearBoth" style="display: none;">
+						<div class="clearBoth">
+							<h:panelGroup>
+								<h:outputLabel for="titre-price-id"
+									value="Prix initial" >
+								</h:outputLabel>
+								<h:inputText id="titre-price-id" value="#{makeOffreBean.initPrice}" >
+								</h:inputText>
+							</h:panelGroup>
+						</div>
+					</div>					
+
+					<div class="clearBoth">
+						<h:commandButton
+							styleClass="text_button" id="button1" value="Sign up"
+							action="#{makeOffreBean.makeOffer}" />
+					</div>
+					<div class="clearBoth">
+						#{affich.requiredFields}
+					</div>
+				</div>
+			</h:form>
+
+			<ui:include src="/sections/help-box.xhtml" />
+
+		</div>	
+		<div class="clearBoth"/>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

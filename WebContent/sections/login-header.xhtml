@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+</head>
+
+<body>
+	<ui:composition>
+			<!-- Main login. -->
+			<div id="mainlogin" class="floatRight">
+		
+				<h:form >
+
+					<ul>
+						<li></li>
+						<!-- <li>
+							<h:link rendered="#{userLoginBean.connected == false}" styleClass="floatRight" id="userForgotPasswordLink" value="#{affich.forgotPasswordLink}" 
+									outcome="forgot-password">
+							</h:link> -->
+						<!-- </li>
+						<li class="extern">
+							<h:inputText rendered="#{userLoginBean.connected == false}" styleClass="user" id="account_email" value="#{userLoginBean.email}" >
+							</h:inputText>
+						</li> -->
+
+
+						<!-- <li class="extern">
+							<h:inputSecret rendered="#{userLoginBean.connected == false}" styleClass="password" id="account_password" value="#{userLoginBean.password}">
+							</h:inputSecret>							
+						</li> -->
+						<li class="extern">
+						
+							<h:commandButton rendered="#{userLoginBean.connected == false}" id="login_button" styleClass="submit"
+								action="#{userLoginBean.login}" />
+
+						</li>
+						<li>
+							<h:commandLink rendered="#{userLoginBean.connected == true}" styleClass="floatRight" id="disconnect" value="#{affich.disconnectLinkLabel}" 
+									action="#{userLoginBean.disconnect}">
+							</h:commandLink>
+						</li>
+					</ul>
+
+				</h:form>
+			</div>
+	</ui:composition>
+</body>
+</html>	

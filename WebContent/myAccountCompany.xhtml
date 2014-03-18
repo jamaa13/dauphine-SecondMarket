@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+	Dauphine Market
+</ui:define>
+
+		<ui:define name="content">
+
+	<f:view>
+
+		
+		<ui:include src="/sections/login-header.xhtml" />
+
+		<div id="left_box">
+			<h3>#{affich.signUpTitle}</h3>
+			<!-- Sing in -->
+			<h:form prependId="false">
+
+				<div id="signUp" class="floatLeft">
+					<div id="errorsBox" class="errormsg" style="margin-bottom: 10px;display:none;">
+						#{affich.errorsListTitle}
+						<h:messages id="errorsList" />
+
+						<script language="javascript" type="text/javascript">
+							{
+								shouldShowErrorsBox('errorsList');
+							}
+						</script>
+					</div>
+					<h2>#{affich.personnelDataHeader}</h2>
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel id="userFirstNameLabel" for="userFirstName"
+								value="#{affich.firstNameLabel}" />
+							<h:inputText id="userFirstName" required="true" requiredMessage="#{affich.firstNameError}" 
+								value="#{myAccountBean.firstName}" />
+						</h:panelGroup>
+					</div>
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel id="userLastNameLabel" for="userLastName"
+								value="#{affich.lastNameLabel}" />
+							<h:inputText id="userLastName" required="true" requiredMessage="#{affich.lastNameError}" value="#{myAccountBean.lastName}" />
+						</h:panelGroup>
+					</div>
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel id="phoneNbrLabel" for="userFirstName"
+								value="#{affich.phoneLabel}" />
+							<h:inputText id="phoneNbr" required="false"  
+								value="#{myAccountBean.phoneNbr}" />
+						</h:panelGroup>
+					</div>		
+					
+					<!-- Address block -->
+					<h2>#{affich.changePasswordHeader}</h2>
+										<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel id="userEmailLabel" for="userEmail"
+								value="#{affich.emailLabel}" >
+							</h:outputLabel>
+							<h:inputText id="userEmail" value="#{myAccountBean.email}" validator="#{myAccountBean.checkLogin}">
+								<f:validator validatorId="emailValidator"></f:validator>
+							</h:inputText>
+						</h:panelGroup>
+					</div>
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel id="userConfirmEmailLabel" for="userConfirmEmail"
+								value="#{affich.confirmEmailLabel}" />
+							<h:inputText id="userConfirmEmail"
+								value="#{myAccountBean.confirmEmail}" >
+								<f:validator validatorId="emailValidator"></f:validator>
+							</h:inputText>
+						</h:panelGroup>
+					</div>
+					
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel id="userPasswordLabel" for="userPassword"
+								value="#{affich.passwordLabel}" />
+							<h:inputSecret id="userPassword" value="#{myAccountBean.password}">
+							</h:inputSecret>
+						</h:panelGroup>
+					</div>
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel id="userConfirmPasswordLabel"
+								for="userConfirmPassword" value="#{affich.confirmPasswordLabel}" />
+							<h:inputSecret id="userConfirmPassword"
+								value="#{myAccountBean.confirmPassword}"
+								 >
+							</h:inputSecret>
+						</h:panelGroup>
+					</div>
+					<div class="clearBoth">
+						<h:commandButton
+							style="float: right; margin-right: 30px;height:20px !important"
+							styleClass="text_button" id="button1" value="Sauvegarder"
+							action="#{myAccountBean.updateUserWithCompanyAccount}" />
+					</div>
+					<div class="clearBoth">
+						#{affich.requiredFields}
+					</div>
+					
+				</div>
+			</h:form>
+
+			<ui:include src="/sections/help-box.xhtml" />
+
+		</div>	
+		</f:view>
+		
+		<div class="clearBoth"/>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

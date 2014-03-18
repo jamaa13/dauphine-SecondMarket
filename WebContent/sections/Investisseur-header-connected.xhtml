@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//FR"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+	<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition>
+		<div id="expheadernavigation" >
+			<div id="expuppernavigation"></div>
+
+			<div style="clear: both; height: 0px;"></div>
+
+			<div id="expnavigationlogo">
+
+				<h:link outcome="login"> 
+					<img src="resources/images/logo.png" width="980px" height="130px" /> 
+				</h:link>
+
+			</div>
+
+			<div id="expmainnavigation" ALIGN="CENTER">
+				<div id="lastOffers" class="clearBoth" style="margin-top: -10px;">
+					<h2>#{userLoginBean.email}</h2>
+				</div>			
+				<ul id="expnavigation" >				
+				<h:form prependId="false">
+					<li class="one"  style="width:100px !important;">
+						<h:link styleClass="one youarehere" value="#{affich.homeHeader}" outcome="home"></h:link>
+					</li>
+					<li class="threetab"  style="width:100px !important;">				
+						<h:commandLink styleClass="three" value="#{affich.myOffers}" action="#{offresBean.mesOffres}"></h:commandLink>
+					</li>
+					<li  class="fivetab"   style="width:90px !important;">
+						<h:link styleClass="tow" value="#{affich.searchCompanyHeader}" outcome="search-companies" ></h:link>
+					</li>					
+					<li class="foortab"  style="width:135px !important;">
+						<h:commandLink styleClass="two" value="#{affich.sendPropositionsMessages}" action="#{propositionBean.sentProposition}"></h:commandLink>
+					</li>
+					<li class="fivetab"  style="width:135px !important;">
+						<h:commandLink styleClass="three" value="#{affich.RecievedPropositionsMessages}" action="#{propositionBean.receivedProposition}" ></h:commandLink>
+					</li>
+					<li class="fivetab"  style="width:115px !important;">
+						<h:commandLink  styleClass="three" value="#{affich.RecievedEnchereMessages}" action="#{enchereBean.receivedEchere}" ></h:commandLink>
+					</li>
+										
+					<li class="foortab"  style="width:115px !important;">
+						<h:commandLink  styleClass="two" value="#{affich.sendEnchereMessages}" action="#{enchereBean.sentEnchere}" ></h:commandLink>
+					</li>	
+
+					</h:form>
+				</ul>
+			</div>
+		</div>
+	</ui:composition>
+</body>
+</html>

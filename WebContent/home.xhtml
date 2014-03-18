@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+	Dauphine Market
+</ui:define>
+
+		<ui:define name="content">
+			
+		<ui:include src="/sections/login-header.xhtml" />
+		
+			
+		<div id="left_box">
+			
+			<h:messages errorStyle="color: red" infoStyle="color: green" layout="table" globalOnly="true" />
+			<!-- Sing in -->
+			
+			<div class="login-callout">
+			    <div class="login-callout-btns" style="margin: 0px 0px 0px 190px;">
+                                
+						<h:link styleClass="big-button-green" outcome="offresEntreprise">
+							Les offres des entreprises
+							<br/>
+						</h:link>
+                         </div>
+			            
+			        &nbsp; &nbsp;
+			        <div class="login-callout-btns" style="margin: 10px 0px 0px 190px">
+						<h:link styleClass="big-button-green" value="" outcome="investors-offers">
+							Les offres des investisseurs				            
+							<br/>
+							
+						</h:link>
+			    </div>
+		   <div class="login-callout-btns" style="margin: 20px 0px 0px 190px">
+			    <h:link styleClass="big-button-green" value="" outcome="make-offer">
+							Publier une nouvelle offre 			            
+							<br/>
+							
+						</h:link>
+			</div>    
+			</div>
+			<ui:include src="/sections/help-box.xhtml" />
+
+		</div>	
+		<div class="clearBoth"/>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

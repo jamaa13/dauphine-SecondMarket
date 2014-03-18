@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsf/c"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>IGNORED</title>
+</head>
+
+<body>
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+	Dauphine Market
+</ui:define>
+
+		<ui:define name="content">
+
+		<ui:include src="/sections/login-header.xhtml" />
+		
+
+		<div id="left_box">
+			<h3>#{msgs.makePropositionPageTitle}</h3>
+			<!-- Sing in -->
+			<h:form prependId="false">
+
+				<div id="signUp" class="floatLeft">
+					<div id="errorsBox" class="errormsg" style="margin-bottom: 10px;display:none;">
+						#{msgs.errorsListTitle}
+						<h:messages id="errorsList" />
+
+						<script language="javascript" type="text/javascript">
+							{
+								shouldShowErrorsBox('errorsList');
+							}
+						</script>
+					</div>			
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{msgs.prixLabel}" for="id"></h:outputLabel>
+							<h:inputText id="id"
+								value="#{makePropositionBean.offerId}" >
+								<h:outputText value="#{param.id}"/>
+							</h:inputText>
+						</h:panelGroup>
+					</div>			
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{msgs.offreLibelleLabel}" for="offreLabel"></h:outputLabel>
+							<h:inputText id="offreLabel"
+								value="#{makePropositionBean.contratLibelle}" >
+							</h:inputText>
+						</h:panelGroup>
+					</div>
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{msgs.offreDescriptionLabel}" for="companyIndustry"></h:outputLabel>
+							<h:inputText id="companyIndustry"
+								value="#{makePropositionBean.description}" >
+							</h:inputText>
+						</h:panelGroup>
+					</div>							
+					<div class="clearBoth">
+						<h:panelGroup>
+							<h:outputLabel value="#{msgs.prixLabel}" for="prixLabel"></h:outputLabel>
+							<h:inputText id="prixLabel"
+								value="#{makePropositionBean.prix}">
+							</h:inputText>
+						</h:panelGroup>
+					</div>	
+					
+					<div class="clearBoth">
+						<h:commandButton
+							styleClass="text_button" id="button4" value="Sign up"
+							action="#{makePropositionBean.makeProposition}" />
+							
+					</div>
+					<div class="clearBoth">
+						#{msgs.requiredFields}
+					</div>
+				</div>
+			</h:form>
+
+			<ui:include src="/sections/help-box.xhtml" />
+
+		</div>	
+		<div class="clearBoth"/>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

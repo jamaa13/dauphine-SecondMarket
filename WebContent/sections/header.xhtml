@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+	<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition>
+		<div id="expheadernavigation">
+			<div id="expuppernavigation"></div>
+
+			<div style="clear: both; height: 0px;"></div>
+
+			<div id="expnavigationlogo">
+
+				<h:link outcome="login"> 
+					<img src="resources/images/logo.png" width="980px" height="130px" /> 
+				</h:link>
+			</div>
+
+			<div id="expmainnavigation">
+				<ul id="expnavigation">
+					<li class="one">
+						<h:link styleClass="one youarehere" value="#{affich.homeOffLine}" outcome="login"></h:link>
+					</li>
+					<li>
+						<h:link styleClass="three" value="#{affich.signUpHeader}" outcome="myAccount"></h:link>
+					</li>				
+					<li>
+						<h:link styleClass="three" value="#{affich.createEntrepriseHeader}" outcome="list-companies"></h:link>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</ui:composition>
+</body>
+</html>

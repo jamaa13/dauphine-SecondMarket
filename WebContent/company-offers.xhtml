@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+	Dauphine Market
+</ui:define>
+
+		<ui:define name="content">
+			
+		<ui:include src="/sections/login-header.xhtml" />
+		
+			
+		<div id="left_box">
+			<h3>#{affich.loginPageTitle}</h3>
+			<!-- Sing in -->
+			<h:form prependId="false">
+				<table class="table table-striped">
+					<tbody>
+						<ui:repeat var="o" value="#{offresBean.offres}">
+							<tr>
+								<td>
+									<span>#{o.id}"</span> 
+								</td>
+								<td>
+								<c:choose>
+									<c:when test="#{o.type == 'Titre'}"> 
+										<h:commandLink value="#{o.comapnyName}" action="#{makePropositionBean.makeProposition}"> </h:commandLink>
+									</c:when>
+									<c:otherwise>
+										<h:commandLink value="#{o.comapnyName}" action="#{makeEnchereBean.makeEnchere}"> </h:commandLink>
+									</c:otherwise>
+								</c:choose>	 
+								</td>
+								<td>
+									<span>#{o.date}</span>
+								</td>
+								<td>
+									<span>#{o.expirationDate}</span>
+								</td>
+							</tr>						
+						</ui:repeat>
+					</tbody>
+				</table>
+			</h:form>
+			<ui:include src="/sections/help-box.xhtml" />
+
+		</div>	
+		<div class="clearBoth"/>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

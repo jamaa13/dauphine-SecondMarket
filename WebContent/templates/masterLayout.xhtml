@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<!-- JSF/Facelets XHTML -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="windowTitle" /></title>
+	<h:outputStylesheet library="css" name="mystyle.css" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputScript library="js" name="myscript.js"/>
+</h:head>
+
+<h:body>
+
+	<div class="container">
+
+			<ui:insert name="heading">
+				<c:choose>
+					<c:when test="#{userLoginBean.userType == 'ADMINISTRATEUR'}">
+						<ui:include src="/sections/Administrateur-header-connected.xhtml" />
+					</c:when>
+					<c:when test="#{userLoginBean.userType == 'COMPANY_SUBSCRIBER'}">
+						<ui:include src="/sections/Entreprise-header-connected.xhtml" />
+					</c:when>
+					<c:when test="#{userLoginBean.userType == 'SUBSCRIBER'}">
+						<ui:include src="/sections/Investisseur-header-connected.xhtml" />
+					</c:when>
+					
+					<c:otherwise>
+						<ui:include src="/sections/header.xhtml" />
+					</c:otherwise>
+				</c:choose>
+			</ui:insert>
+
+
+			<ui:insert name="content" />
+	</div>
+	<ui:debug />
+</h:body>
+</html>
